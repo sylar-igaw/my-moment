@@ -6,6 +6,13 @@ let toDos = []
 
 function handleTodoSubmit(event){
     event.preventDefault();
+    //console.log(toDos.length )
+    if( toDos.length >= 5)
+    {
+        alert("더이상 추가할 수 없습니다. 최대 5개");
+        return;
+    }
+
     const newTodo = toDoInput.value
     toDoInput.value=''
     const newTodoObj = {
@@ -13,33 +20,34 @@ function handleTodoSubmit(event){
         id : Date.now()
     }
     toDos.push(newTodoObj)
-
     paintTodo(newTodoObj)
-    
     saveTodos()
 }
 
 function deleteTodo(event){
-    console.log(event.target.parentElement)
+    console.log('deleteTodo')
     const li = event.target.parentElement;
     toDos = toDos.filter((x)=> x.id != li.id)
     saveTodos()
     li.remove();
     // event.target.parentNode.remove();
-    this.closest('li').remove();
 }
 function paintTodo(newTodoObj){
-    // console.log(newTodo)
+    //console.log("paintTodo" , newTodoObj)
     const li = document.createElement('li');
     li.id = newTodoObj.id;
+    li.classList.add("todo-li")
     const span = document.createElement('span');
+    span.classList.add("todo-li-span")
     span.innerText = newTodoObj.text;
 
     const button = document.createElement('button')
-    button.innerText ="X"
+    button.innerHTML =`X`
+    button.classList.add('ic-delete')
     button.addEventListener("click", deleteTodo)
-    li.appendChild(span);
     li.appendChild(button);
+    li.appendChild(span);
+    
     toDoList.appendChild(li)
     
     
