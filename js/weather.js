@@ -32,7 +32,7 @@ function paintWeather(data)
     const weatherSpan = document.querySelector("#weather span:first-child")
     const citySpan = document.querySelector("#weather span:last-child")
     citySpan.innerText = data.name
-    weatherSpan.innerText = `${data.weather[0].main} / 현재 온도: ${data.main.temp}°C /Feel : ${data.main.feels_like}°C `
+    weatherSpan.innerText = `${data.weather[0].main} / 현재 온도: ${data.main.temp}°C / Feel : ${data.main.feels_like}°C /`
 }
 function onGeoOk(position){
     const lat = position.coords.latitude;

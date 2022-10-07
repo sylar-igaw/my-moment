@@ -4,6 +4,7 @@ const loginButton = loginForm.querySelector("button");
 const todoForm = document.querySelector("#todo-form");
 
 const greeting = document.querySelector("#greeting");
+const btnlogout = document.getElementById("btn_logout")
 const HIDDEN_CLASSNAME = "hidden"
 const USER_NAME_KEY = "user_name"
 
@@ -23,6 +24,7 @@ function showGreeing(user_name)
     greeting.innerHTML = `Hello ${user_name}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
     todoForm.classList.remove(HIDDEN_CLASSNAME);
+    btnlogout.classList.remove(HIDDEN_CLASSNAME);
 
 }
 
@@ -34,6 +36,8 @@ if( saveUserName === null)
 {
     //show the form
     loginForm.classList.remove(HIDDEN_CLASSNAME);
+    btnlogout.classList.add(HIDDEN_CLASSNAME);
+    todoForm.classList.add(HIDDEN_CLASSNAME);
     loginForm.addEventListener('submit', onLoginSubmit);
 }
 else 
